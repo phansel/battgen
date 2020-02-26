@@ -1,0 +1,45 @@
+/*
+    Copyright (C) 2020 Paul Hansel        
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+InputModule(
+    // these are necessary for basic use
+    shape: "prism",
+    input_type: "cell",
+    chem: "lfp",
+    series: 1,
+    parallel: 1,
+    dims: (0.201,0.174,0.054),
+    mass: 3.82,
+    termination: "end",
+    vmin: 3.0,
+    vmax: 3.6,
+    // nominal voltage
+    vnom: 3.2,
+    // capacity in Ah
+    q: 200,
+    // resistance nominal max
+    rnom: 0.00025,
+    // continuous maximum current according to manufacturer
+    max_current_continuous: 288,
+    specific_heat: 780,
+    // to 80% SoH at 1C charge/discharge
+    cycle_life: 2000,
+    // specific heat
+    // KELVIN
+    temp_max: 333.15,
+    temp_min: 253.15,
+)

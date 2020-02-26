@@ -1,0 +1,45 @@
+/*
+    Copyright (C) 2020 Paul Hansel        
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+InputModule(
+    // these are necessary for basic use
+    shape: "cylinder",
+    input_type: "cell",
+    chem: "nmc",
+    series: 1,
+    parallel: 1,
+    dims: (0.021,0.070,0), // diameter, length, 0
+    mass: 0.070,
+    termination: "axial",
+    vmin: 2.5,
+    vmax: 4.2,
+    // nominal voltage
+    vnom: 3.63,
+    // capacity in Ah
+    q: 5,
+    // resistance nominal max
+    rnom: 0.03,
+    // continuous maximum current according to manufacturer
+    max_current_continuous: 7.3,
+    specific_heat: 780,
+    // to 80% SoH at 1C charge/discharge
+    cycle_life: 700,
+    // specific heat
+    // KELVIN
+    temp_max: 333.15,
+    temp_min: 253.15,
+)
