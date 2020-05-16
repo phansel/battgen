@@ -47,4 +47,29 @@ pub fn demo() {
 
     // this is broken. feel free to fix it.
     println!("Leaf pack volume: {} m3", leafbat.get_min_volume_packed());
+
+    println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    println!("making a pack from 200Ah cells....");
+
+    let lfp_200_mod_file = "./examples/cells/lfp_200ah.ron";
+    let lfp_200 = read_module(&lfp_200_mod_file);
+
+    lfp_200.print_mechanical();
+    lfp_200.print_mass();
+    lfp_200.print_electrical_nominal();
+    lfp_200.print_topology();
+
+
+    let newbat = Battery::new_from(lfp_200, 96, 1);
+
+    newbat.print_topology();
+    newbat.print_voltage();
+    newbat.print_ah();
+
+    println!("Nominal pack capacity: {} kWh", newbat.get_kwh_nominal());
+
+    // this is broken. feel free to fix it.
+    println!("Leaf pack volume: {} m3", newbat.get_min_volume_packed());
+
+
 }

@@ -110,7 +110,9 @@ impl Battery {
         let l = self.module_array.len();
         let mut vol: f32 = 0.0;
         for i in 0..l - 1 {
+            println!("self volume: {}", self.module_array[i].module.get_min_volume_packed());
             let vp = self.module_array[i].module.get_min_volume_packed();
+            println!("self count: {}", self.module_array[i].get_cell_count());
             let cc = self.module_array[i].get_cell_count() as f32;
             vol += vp * cc;
         }
