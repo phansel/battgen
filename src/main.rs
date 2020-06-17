@@ -125,9 +125,17 @@ fn main() {
     println!("Using input file: {}", input_file);
 
     // do they want to generate a new pack? if not, it's still 1S1P (i.e. a lone cell)
-    let default_topo = "1S1P";
-    let topology = matches.value_of("topology").unwrap_or(default_topo);
-    
+    let default_topo = "1S.1P";
+    let mut topology = matches.value_of("topology").unwrap_or(default_topo);
+    println!("Topology provided: {}", topology); 
+    let mut topo_arr: Vec<&str> = topology.split("S").collect();
+    let topo_s: &str = topo_arr[0];
+    let topo_p: Vec<&str> = topo_arr[1].split("P").collect();
+
+    let topo_sn: i32 = topo_s.parse().unwrap_or(1);
+    let topo_pn: i32 = topo_p[0].parse().unwrap_or(1);
+
+    println!("Topology parsed as: {}S {}P", topo_sn, topo_pn);
 
     // actually print out what the use asked for.
     match matches.occurrences_of("v") {
