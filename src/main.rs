@@ -127,6 +127,7 @@ fn main() {
     // do they want to generate a new pack? if not, it's still 1S1P (i.e. a lone cell)
     let default_topo = "1S1P";
     let topology = matches.value_of("topology").unwrap_or(default_topo);
+    
 
     // actually print out what the use asked for.
     match matches.occurrences_of("v") {
