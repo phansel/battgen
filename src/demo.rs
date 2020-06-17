@@ -40,6 +40,10 @@ pub fn demo() {
 
     demo_from_filename(lfp_202_mod_file, 96, 1);
 
+    let tesla_cell_file = "./examples/cells/tesla_21700.ron";
+
+    demo_from_filename(tesla_cell_file, 96, 10);
+
 /*
     println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     let lfp_75_mod_file = "./examples/cells/lfp_75ah.ron";
@@ -74,8 +78,6 @@ pub fn demo_from_filename(fname: &str, s: i32, p: i32) {
     newbat2.print_topology();
     newbat2.print_voltage();
     newbat2.print_ah();
-
-    println!("Nominal pack capacity: {} kWh", newbat2.get_kwh_nominal());
 
     println!("Nominal pack capacity: {} kWh", newbat2.get_kwh_nominal());
 
