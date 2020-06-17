@@ -117,12 +117,12 @@ pub enum Chem {
 impl Module {
     // returns pack voltage in volts
     pub fn get_voltage(self) -> f32 {
-        return self.vnom * (self.series as f32);
+        return self.vnom;
     }
 
     // returns pack charge capacity in Ah
     pub fn get_ah(self) -> f32 {
-        return self.q * (self.parallel as f32);
+        return self.q;
     }
 
     // returns pack energy capacity in kWh
@@ -197,17 +197,23 @@ impl ModuleArray {
 
     // returns pack voltage in V
     pub fn get_voltage(&self) -> f32 {
-        return self.series as f32 * self.module.vnom;
+        return self.module.vnom * self.series as f32;
     }
 
     // returns pack charge capacity in Ah
     pub fn get_ah(&self) -> f32 {
-        return self.parallel as f32 * self.module.q;
+        return self.module.q * self.parallel as f32;
     }
 
     // returns pack energy capacity in kWh
     pub fn get_kwh_nominal(&self) -> f32 {
         return self.get_ah() * self.get_voltage() / 1000_f32;
+    }
+
+    pub fn get_module_count(&self) -> i32 {
+        let a = self.series;
+        let b = self.parallel;
+        return a * b;
     }
 
     pub fn get_cell_count(&self) -> i32 {
@@ -301,6 +307,14 @@ impl Battery {
     // returns pack minimum accessible energy capacity in kWh
     pub fn get_kwh_nominal(&self) -> f32 {
         return self.get_ah() * self.get_voltage() / 1000_f32;
+    }
+
+    pub fn get_module_count(&self) -> i32 {
+        let a = self.get_topology();
+        let b = self.module_array[0].get_topology();
+        let x = a.0 / b.0;
+        let y = a.1 / b.1;
+        return x * y;
     }
 
     pub fn get_cell_count(&self) -> i32 {

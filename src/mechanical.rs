@@ -111,11 +111,10 @@ impl Battery {
         let mut vol: f32 = 0.0;
 //        println!("~~~~this is the value of L: {}", l);
         for i in 0..l {
- //           println!("self volume: {}", self.module_array[i].module.get_min_volume_packed());
+//            println!("self volume: {}", self.module_array[i].module.get_min_volume_packed());
             let vp = self.module_array[i].module.get_min_volume_packed();
- //           println!("self count: {}", self.module_array[i].get_cell_count());
- //           // this is the wrong function to use v should be getting module coun
-            let cc = self.module_array[i].get_cell_count() as f32;
+//            println!("self count: {}", self.module_array[i].get_module_count());
+            let cc = self.module_array[i].get_module_count() as f32;
             vol += vp * cc;
         }
         return vol;

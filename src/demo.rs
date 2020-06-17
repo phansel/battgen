@@ -27,49 +27,58 @@ pub fn demo() {
 
     println!("~~~~~~~Recreating 2012 Nissan LEAF pack:~~~~~~~~");
 
-    let leafm = read_module(&leaf_mod_file);
-
-    leafm.print_mechanical();
-    leafm.print_mass();
-    leafm.print_electrical_nominal();
-    leafm.print_topology();
-
-    println!("~~~~~~~~~~");
-
-    // leafbat consumes leafm, leafm is no longer publicly accessible after here!
-    let leafbat = Battery::new_from(leafm, 48, 1);
-
-    leafbat.print_topology();
-    leafbat.print_voltage();
-    leafbat.print_ah();
-
-    println!("Nominal pack capacity: {} kWh", leafbat.get_kwh_nominal());
-
-    // this is broken. feel free to fix it.
-    println!("Leaf pack volume: {} m3", leafbat.get_min_volume_packed());
+    demo_from_filename(leaf_mod_file, 48, 1);
 
     println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     println!("making a pack from 200Ah cells....");
 
     let lfp_200_mod_file = "./examples/cells/lfp_200ah.ron";
-    let lfp_200 = read_module(&lfp_200_mod_file);
+    
+    demo_from_filename(lfp_200_mod_file, 96, 1);
 
-    lfp_200.print_mechanical();
-    lfp_200.print_mass();
-    lfp_200.print_electrical_nominal();
-    lfp_200.print_topology();
+    let lfp_202_mod_file = "./examples/cells/lfp_202ah.ron";
+
+    demo_from_filename(lfp_202_mod_file, 96, 1);
+
+/*
+    println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    let lfp_75_mod_file = "./examples/cells/lfp_75ah.ron";
+
+    demo_from_filename(lfp_75_mod_file, 96, 1);
 
 
-    let newbat = Battery::new_from(lfp_200, 96, 1);
+    println!("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-    newbat.print_topology();
-    newbat.print_voltage();
-    newbat.print_ah();
+    demo_from_filename(lfp_75_mod_file, 96, 2);
+*/
+}
 
-    println!("Nominal pack capacity: {} kWh", newbat.get_kwh_nominal());
+
+
+
+
+pub fn demo_from_filename(fname: &str, s: i32, p: i32) {
+    
+    println!("Generating demo from module given: {} {}S{}P", fname, s, p);
+        
+    let dmod = read_module(fname);
+
+    dmod.print_mechanical();
+    dmod.print_mass();
+    dmod.print_electrical_nominal();
+    dmod.print_topology();
+
+
+    let newbat2 = Battery::new_from(dmod, s, p);
+
+    newbat2.print_topology();
+    newbat2.print_voltage();
+    newbat2.print_ah();
+
+    println!("Nominal pack capacity: {} kWh", newbat2.get_kwh_nominal());
+
+    println!("Nominal pack capacity: {} kWh", newbat2.get_kwh_nominal());
 
     // this is broken. feel free to fix it.
-    println!("Leaf pack volume: {} m3", newbat.get_min_volume_packed());
-
-
+    println!("Leaf pack volume: {} m3", newbat2.get_min_volume_packed());
 }
