@@ -28,6 +28,8 @@ use serde::{Deserialize, Serialize};
 extern crate ron;
 use ron::value::Value;
 
+use colored::*;
+
 use std::env;
 use std::{collections::HashMap, fs::File};
 
@@ -162,6 +164,8 @@ fn main() {
             m.print_electrical_nominal();
         }
     };
+
+    demo_from_filename(input_file, topo_sn, topo_pn);
 
     // print out the Leaf demo if user asked for it.
     match matches.occurrences_of("demo") {

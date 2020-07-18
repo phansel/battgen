@@ -269,7 +269,7 @@ impl Battery {
 
     pub fn print_topology(&self) {
         let a = self.get_topology();
-        println!("Battery minimum topology: {}S{}P", a.0, a.1);
+        println!("{} {}S{}P", "Battery minimum topology: ".purple(), a.0, a.1);
         println!("Note: this does not account for cell voltages.");
     }
 

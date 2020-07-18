@@ -63,7 +63,7 @@ pub fn demo() {
 
 pub fn demo_from_filename(fname: &str, s: i32, p: i32) {
     
-    println!("Generating demo from module given: {} {}S{}P", fname, s, p);
+    println!("{} {} {}S{}P", "Generating demo from module given".green(), fname, s, p);
         
     let dmod = read_module(fname);
 
@@ -79,8 +79,8 @@ pub fn demo_from_filename(fname: &str, s: i32, p: i32) {
     newbat2.print_voltage();
     newbat2.print_ah();
 
-    println!("Nominal pack capacity: {} kWh", newbat2.get_kwh_nominal());
+    println!("{} {} kWh", "Nominal pack capacity: ".blue(), newbat2.get_kwh_nominal());
 
     // this is broken. feel free to fix it.
-    println!("Leaf pack volume: {} m3", newbat2.get_min_volume_packed());
+    println!("{} {} m3", "Leaf pack volume: ".red(), newbat2.get_min_volume_packed());
 }
