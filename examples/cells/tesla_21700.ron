@@ -32,7 +32,7 @@ InputModule(
     // capacity in Ah
     q: 4.8,
     // resistance nominal max
-    rnom: 0.015,
+    rnom: 0.013,
     // continuous maximum current according to manufacturer
     max_current_continuous: 15,
     specific_heat: 780,
